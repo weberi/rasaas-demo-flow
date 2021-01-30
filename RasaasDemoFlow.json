@@ -1,0 +1,578 @@
+[
+    {
+        "id": "2f82d84a.d829f",
+        "type": "tab",
+        "label": "RasaasDemo",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "a2069b4b.8b5ed8",
+        "type": "http in",
+        "z": "2f82d84a.d829f",
+        "name": "/webhook",
+        "url": "/webhook",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 80,
+        "y": 40,
+        "wires": [
+            [
+                "c543f689.9a4408"
+            ]
+        ]
+    },
+    {
+        "id": "c543f689.9a4408",
+        "type": "init",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "x": 230,
+        "y": 40,
+        "wires": [
+            [
+                "aa829c12.bbee9"
+            ]
+        ]
+    },
+    {
+        "id": "135c951a.835963",
+        "type": "finish",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "x": 870,
+        "y": 243,
+        "wires": [
+            [
+                "8070ce06.508d7"
+            ]
+        ]
+    },
+    {
+        "id": "8070ce06.508d7",
+        "type": "http response",
+        "z": "2f82d84a.d829f",
+        "name": "http response",
+        "statusCode": "",
+        "headers": {},
+        "x": 840,
+        "y": 323,
+        "wires": []
+    },
+    {
+        "id": "f18c57c9.8e85c",
+        "type": "template",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "http://api.weatherstack.com/current?access_key=a44da752f27b1faef406ed4f6246b5d5&query={{slots.location}}",
+        "output": "str",
+        "x": 360,
+        "y": 163,
+        "wires": [
+            [
+                "32d1ca39.3ad06e"
+            ]
+        ]
+    },
+    {
+        "id": "2756693d.946c0e",
+        "type": "http request",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 690,
+        "y": 163,
+        "wires": [
+            [
+                "9eb354e8.32b04"
+            ]
+        ]
+    },
+    {
+        "id": "32d1ca39.3ad06e",
+        "type": "change",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "url",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 510,
+        "y": 163,
+        "wires": [
+            [
+                "2756693d.946c0e"
+            ]
+        ]
+    },
+    {
+        "id": "9eb354e8.32b04",
+        "type": "template",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "field": "payload.text",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "It is {{payload.current.weather_descriptions.0}} in {{payload.location.name}}, {{payload.location.country}} at the moment. The temperature is {{payload.current.temperature}} degrees, \nthe humidity is {{payload.current.humidity}}% and the wind speed is {{payload.current.wind_speed}} mph.",
+        "output": "str",
+        "x": 860,
+        "y": 163,
+        "wires": [
+            [
+                "73cf767f.109ed8"
+            ]
+        ]
+    },
+    {
+        "id": "47d49ded.2c5194",
+        "type": "catch",
+        "z": "2f82d84a.d829f",
+        "name": "Catchall",
+        "scope": null,
+        "uncaught": false,
+        "x": 100,
+        "y": 463,
+        "wires": [
+            [
+                "58e52787.2f0708"
+            ]
+        ]
+    },
+    {
+        "id": "58e52787.2f0708",
+        "type": "function",
+        "z": "2f82d84a.d829f",
+        "name": "prepare error message",
+        "func": "\n\nvar infotext = \"Sorry, jetzt ist ein Fehler aufgetreten!!\\nDiese technische Info ist für meine Betreuer. \\n_\" + msg.error.message + \" (\" +  msg.error.source.id +\")._\\n\" + \" Bitte versuchen Sie es noch einmal mit einer anderen Eingabe.\"\n\n\npayload.infotext = infotext;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 310,
+        "y": 463,
+        "wires": [
+            [
+                "17992cb7.88487b"
+            ]
+        ]
+    },
+    {
+        "id": "76e2ce0.8fa6eb4",
+        "type": "http response",
+        "z": "2f82d84a.d829f",
+        "name": "http (500)",
+        "statusCode": "",
+        "headers": {},
+        "x": 800,
+        "y": 463,
+        "wires": []
+    },
+    {
+        "id": "65b63033.ba5d7",
+        "type": "finish",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "x": 670,
+        "y": 463,
+        "wires": [
+            [
+                "76e2ce0.8fa6eb4"
+            ]
+        ]
+    },
+    {
+        "id": "17992cb7.88487b",
+        "type": "sendtext",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "text": "payload.infotext",
+        "textType": "msg",
+        "x": 520,
+        "y": 463,
+        "wires": [
+            [
+                "65b63033.ba5d7"
+            ]
+        ]
+    },
+    {
+        "id": "73cf767f.109ed8",
+        "type": "sendextra",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "text": "payload.text",
+        "textType": "msg",
+        "image": "payload.current.weather_icons",
+        "imageType": "msg",
+        "attachment": "",
+        "attachmentType": "str",
+        "x": 120,
+        "y": 243,
+        "wires": [
+            [
+                "47237d22.eafac4"
+            ]
+        ]
+    },
+    {
+        "id": "5d24aa91.72a394",
+        "type": "setslots",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "text": "",
+        "addcheck": false,
+        "slots": [
+            {
+                "slotname": "location",
+                "slotname-type": "str",
+                "slotvalue": "payload.newlocation",
+                "slotvalue-type": "msg"
+            }
+        ],
+        "x": 720,
+        "y": 243,
+        "wires": [
+            [
+                "135c951a.835963"
+            ]
+        ]
+    },
+    {
+        "id": "47c348d1.0d53e",
+        "type": "change",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.newlocation",
+                "pt": "msg",
+                "to": "Barcelona",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 510,
+        "y": 243,
+        "wires": [
+            [
+                "5d24aa91.72a394"
+            ]
+        ]
+    },
+    {
+        "id": "47237d22.eafac4",
+        "type": "sendbuttons",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "text": "",
+        "addmode": "no",
+        "buttons": [
+            {
+                "title": "Thanks, I am done",
+                "title-type": "str",
+                "payload": "/goodbye",
+                "payload-type": "str"
+            },
+            {
+                "title": "I want to ask more weather",
+                "title-type": "str",
+                "payload": "/hello",
+                "payload-type": "str"
+            },
+            {
+                "title": "I want more info",
+                "title-type": "str",
+                "payload": "/action_more",
+                "payload-type": "str"
+            }
+        ],
+        "x": 270,
+        "y": 243,
+        "wires": [
+            [
+                "47c348d1.0d53e"
+            ]
+        ]
+    },
+    {
+        "id": "88479415.978508",
+        "type": "http in",
+        "z": "2f82d84a.d829f",
+        "name": "/health",
+        "url": "/health",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 523,
+        "wires": [
+            [
+                "ef311f1d.9947"
+            ]
+        ]
+    },
+    {
+        "id": "2427f09a.8e059",
+        "type": "http response",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 490,
+        "y": 523,
+        "wires": []
+    },
+    {
+        "id": "df491661.98c9e8",
+        "type": "http in",
+        "z": "2f82d84a.d829f",
+        "name": "/actions",
+        "url": "/actions",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 583,
+        "wires": [
+            [
+                "c9d888e2.dab94"
+            ]
+        ]
+    },
+    {
+        "id": "67b0be2.2deb94",
+        "type": "http response",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 490,
+        "y": 583,
+        "wires": []
+    },
+    {
+        "id": "ef311f1d.9947",
+        "type": "change",
+        "z": "2f82d84a.d829f",
+        "name": "Status: ok",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"status\":\"ok\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 260,
+        "y": 523,
+        "wires": [
+            [
+                "2427f09a.8e059"
+            ]
+        ]
+    },
+    {
+        "id": "c9d888e2.dab94",
+        "type": "change",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "[{\"name\":\"action_weather\"},{\"name\":\"action_more\"}]",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 270,
+        "y": 583,
+        "wires": [
+            [
+                "67b0be2.2deb94"
+            ]
+        ]
+    },
+    {
+        "id": "aa829c12.bbee9",
+        "type": "switch",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "property": "action",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "action_weather",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "action_more",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 150,
+        "y": 120,
+        "wires": [
+            [
+                "f18c57c9.8e85c"
+            ],
+            [
+                "229c11ea.110936"
+            ]
+        ]
+    },
+    {
+        "id": "5b5ac2d6.321934",
+        "type": "http request",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 430,
+        "y": 380,
+        "wires": [
+            [
+                "5f2aa558.5d16d4"
+            ]
+        ]
+    },
+    {
+        "id": "229c11ea.110936",
+        "type": "template",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "https://en.wikipedia.org/w/api.php?action=opensearch&limit=1&namespace=0&format=json&search={{slots.location}}",
+        "output": "str",
+        "x": 100,
+        "y": 340,
+        "wires": [
+            [
+                "c147a06b.49b2b"
+            ]
+        ]
+    },
+    {
+        "id": "5f2aa558.5d16d4",
+        "type": "sendextra",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "text": "You can find more info here!",
+        "textType": "str",
+        "image": "",
+        "imageType": "str",
+        "attachment": "payload[3][0]",
+        "attachmentType": "msg",
+        "x": 620,
+        "y": 380,
+        "wires": [
+            [
+                "2f587fda.4540f8"
+            ]
+        ]
+    },
+    {
+        "id": "2f587fda.4540f8",
+        "type": "finish",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "x": 750,
+        "y": 380,
+        "wires": [
+            [
+                "c51912c0.7ed228"
+            ]
+        ]
+    },
+    {
+        "id": "c51912c0.7ed228",
+        "type": "http response",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 870,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "c147a06b.49b2b",
+        "type": "change",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "url",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 250,
+        "y": 360,
+        "wires": [
+            [
+                "5b5ac2d6.321934"
+            ]
+        ]
+    }
+]
