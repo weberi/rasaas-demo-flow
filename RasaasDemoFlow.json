@@ -10,6 +10,7 @@
         "id": "a2069b4b.8b5ed8",
         "type": "http in",
         "z": "2f82d84a.d829f",
+        "d": true,
         "name": "/webhook",
         "url": "/webhook",
         "method": "post",
@@ -32,7 +33,8 @@
         "y": 40,
         "wires": [
             [
-                "aa829c12.bbee9"
+                "aa829c12.bbee9",
+                "84ce997.b555668"
             ]
         ]
     },
@@ -166,7 +168,7 @@
         "type": "function",
         "z": "2f82d84a.d829f",
         "name": "prepare error message",
-        "func": "\n\nvar infotext = \"Sorry, jetzt ist ein Fehler aufgetreten!!\\nDiese technische Info ist für meine Betreuer. \\n_\" + msg.error.message + \" (\" +  msg.error.source.id +\")._\\n\" + \" Bitte versuchen Sie es noch einmal mit einer anderen Eingabe.\"\n\n\npayload.infotext = infotext;\n\nreturn msg;",
+        "func": "\n\nvar infotext = \"Sorry, jetzt ist ein Fehler aufgetreten!!\\nDiese technische Info ist fÃ¼r meine Betreuer. \\n_\" + msg.error.message + \" (\" +  msg.error.source.id +\")._\\n\" + \" Bitte versuchen Sie es noch einmal mit einer anderen Eingabe.\"\n\n\npayload.infotext = infotext;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -208,6 +210,8 @@
         "type": "sendtext",
         "z": "2f82d84a.d829f",
         "name": "",
+        "position": "",
+        "positionType": "",
         "text": "payload.infotext",
         "textType": "msg",
         "x": 520,
@@ -223,6 +227,8 @@
         "type": "sendextra",
         "z": "2f82d84a.d829f",
         "name": "",
+        "position": "",
+        "positionType": "",
         "text": "payload.text",
         "textType": "msg",
         "image": "payload.current.weather_icons",
@@ -292,7 +298,10 @@
         "type": "sendbuttons",
         "z": "2f82d84a.d829f",
         "name": "",
+        "position": "",
+        "positionType": "",
         "text": "",
+        "textType": "str",
         "addmode": "no",
         "buttons": [
             {
@@ -311,6 +320,18 @@
                 "title": "I want more info",
                 "title-type": "str",
                 "payload": "/action_more",
+                "payload-type": "str"
+            },
+            {
+                "title": "",
+                "title-type": "str",
+                "payload": "",
+                "payload-type": "str"
+            },
+            {
+                "title": "",
+                "title-type": "str",
+                "payload": "",
                 "payload-type": "str"
             }
         ],
@@ -510,6 +531,8 @@
         "type": "sendextra",
         "z": "2f82d84a.d829f",
         "name": "",
+        "position": "",
+        "positionType": "",
         "text": "You can find more info here!",
         "textType": "str",
         "image": "",
@@ -574,5 +597,22 @@
                 "5b5ac2d6.321934"
             ]
         ]
+    },
+    {
+        "id": "84ce997.b555668",
+        "type": "debug",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "action",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 80,
+        "wires": []
     }
 ]
