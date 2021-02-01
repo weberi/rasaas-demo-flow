@@ -69,7 +69,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "http://api.weatherstack.com/current?access_key=\"____\"&query={{slots.location}}",
+        "template": "http://api.weatherstack.com/current?access_key=xxx&query={{slots.location}}",
         "output": "str",
         "x": 290,
         "y": 100,
@@ -131,7 +131,7 @@
         "id": "9eb354e8.32b04",
         "type": "template",
         "z": "2f82d84a.d829f",
-        "name": "if success",
+        "name": "otherwise",
         "field": "payload.text",
         "fieldType": "msg",
         "format": "handlebars",
@@ -576,10 +576,10 @@
         "propertyType": "msg",
         "rules": [
             {
-                "t": "true"
+                "t": "false"
             },
             {
-                "t": "false"
+                "t": "else"
             }
         ],
         "checkall": "true",
@@ -589,10 +589,10 @@
         "y": 100,
         "wires": [
             [
-                "9eb354e8.32b04"
+                "88e8b933.29c788"
             ],
             [
-                "88e8b933.29c788"
+                "9eb354e8.32b04"
             ]
         ]
     },
