@@ -41,8 +41,8 @@
         "type": "finish",
         "z": "2f82d84a.d829f",
         "name": "",
-        "x": 730,
-        "y": 160,
+        "x": 748,
+        "y": 220,
         "wires": [
             [
                 "8070ce06.508d7"
@@ -56,8 +56,8 @@
         "name": "http response",
         "statusCode": "",
         "headers": {},
-        "x": 880,
-        "y": 160,
+        "x": 898,
+        "y": 220,
         "wires": []
     },
     {
@@ -69,7 +69,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "http://api.weatherstack.com/current?access_key=a44da752f27b1faef406ed4f6246b5d5&query={{slots.location}}",
+        "template": "http://api.weatherstack.com/current?access_key=\"____\"&query={{slots.location}}",
         "output": "str",
         "x": 300,
         "y": 100,
@@ -96,7 +96,7 @@
         "y": 100,
         "wires": [
             [
-                "9eb354e8.32b04"
+                "8b59fd8f.24a59"
             ]
         ]
     },
@@ -131,15 +131,15 @@
         "id": "9eb354e8.32b04",
         "type": "template",
         "z": "2f82d84a.d829f",
-        "name": "",
+        "name": "if success",
         "field": "payload.text",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
         "template": "It is {{payload.current.weather_descriptions.0}} in {{payload.location.name}}, {{payload.location.country}} at the moment. The temperature is {{payload.current.temperature}} degrees, \nthe humidity is {{payload.current.humidity}}% and the wind speed is {{payload.current.wind_speed}} mph.",
         "output": "str",
-        "x": 760,
-        "y": 100,
+        "x": 300,
+        "y": 160,
         "wires": [
             [
                 "73cf767f.109ed8"
@@ -154,7 +154,7 @@
         "scope": null,
         "uncaught": false,
         "x": 80,
-        "y": 260,
+        "y": 320,
         "wires": [
             [
                 "58e52787.2f0708"
@@ -172,7 +172,7 @@
         "initialize": "",
         "finalize": "",
         "x": 270,
-        "y": 260,
+        "y": 320,
         "wires": [
             [
                 "17992cb7.88487b"
@@ -187,7 +187,7 @@
         "statusCode": "",
         "headers": {},
         "x": 720,
-        "y": 260,
+        "y": 320,
         "wires": []
     },
     {
@@ -196,7 +196,7 @@
         "z": "2f82d84a.d829f",
         "name": "",
         "x": 590,
-        "y": 260,
+        "y": 320,
         "wires": [
             [
                 "76e2ce0.8fa6eb4"
@@ -213,7 +213,7 @@
         "text": "payload.infotext",
         "textType": "msg",
         "x": 460,
-        "y": 260,
+        "y": 320,
         "wires": [
             [
                 "65b63033.ba5d7"
@@ -234,7 +234,7 @@
         "attachment": "",
         "attachmentType": "str",
         "x": 300,
-        "y": 160,
+        "y": 220,
         "wires": [
             [
                 "559bf1a4.898f78"
@@ -257,7 +257,7 @@
             }
         ],
         "x": 600,
-        "y": 160,
+        "y": 220,
         "wires": [
             [
                 "135c951a.835963"
@@ -274,7 +274,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 70,
-        "y": 320,
+        "y": 380,
         "wires": [
             [
                 "ef311f1d.9947"
@@ -289,7 +289,7 @@
         "statusCode": "",
         "headers": {},
         "x": 360,
-        "y": 320,
+        "y": 380,
         "wires": []
     },
     {
@@ -302,7 +302,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 70,
-        "y": 380,
+        "y": 440,
         "wires": [
             [
                 "c9d888e2.dab94"
@@ -317,7 +317,7 @@
         "statusCode": "",
         "headers": {},
         "x": 360,
-        "y": 380,
+        "y": 440,
         "wires": []
     },
     {
@@ -340,7 +340,7 @@
         "to": "",
         "reg": false,
         "x": 200,
-        "y": 320,
+        "y": 380,
         "wires": [
             [
                 "2427f09a.8e059"
@@ -367,7 +367,7 @@
         "to": "",
         "reg": false,
         "x": 200,
-        "y": 380,
+        "y": 440,
         "wires": [
             [
                 "67b0be2.2deb94"
@@ -421,7 +421,7 @@
         "proxy": "",
         "authType": "",
         "x": 450,
-        "y": 200,
+        "y": 260,
         "wires": [
             [
                 "5f2aa558.5d16d4"
@@ -440,7 +440,7 @@
         "template": "https://en.wikipedia.org/w/api.php?action=opensearch&limit=1&namespace=0&format=json&search={{slots.location}}",
         "output": "str",
         "x": 140,
-        "y": 200,
+        "y": 260,
         "wires": [
             [
                 "c147a06b.49b2b"
@@ -461,7 +461,7 @@
         "attachment": "payload[3][0]",
         "attachmentType": "msg",
         "x": 600,
-        "y": 200,
+        "y": 260,
         "wires": [
             [
                 "2f587fda.4540f8"
@@ -473,8 +473,8 @@
         "type": "finish",
         "z": "2f82d84a.d829f",
         "name": "",
-        "x": 730,
-        "y": 200,
+        "x": 748,
+        "y": 260,
         "wires": [
             [
                 "c51912c0.7ed228"
@@ -488,8 +488,8 @@
         "name": "http response",
         "statusCode": "",
         "headers": {},
-        "x": 880,
-        "y": 200,
+        "x": 898,
+        "y": 260,
         "wires": []
     },
     {
@@ -512,7 +512,7 @@
         "to": "",
         "reg": false,
         "x": 290,
-        "y": 200,
+        "y": 260,
         "wires": [
             [
                 "5b5ac2d6.321934"
@@ -550,7 +550,7 @@
             }
         ],
         "x": 450,
-        "y": 160,
+        "y": 220,
         "wires": [
             [
                 "5d24aa91.72a394"
@@ -563,8 +563,73 @@
         "z": "2f82d84a.d829f",
         "name": "add api key for weatherstack",
         "info": "",
-        "x": 480,
+        "x": 440,
         "y": 60,
         "wires": []
+    },
+    {
+        "id": "8b59fd8f.24a59",
+        "type": "switch",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "property": "payload.success",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 750,
+        "y": 100,
+        "wires": [
+            [
+                "9eb354e8.32b04"
+            ],
+            [
+                "88e8b933.29c788"
+            ]
+        ]
+    },
+    {
+        "id": "88e8b933.29c788",
+        "type": "template",
+        "z": "2f82d84a.d829f",
+        "name": "on fail",
+        "field": "payload.text",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "I am sorry. I cannot help you. {{payload.error.info}} !",
+        "output": "str",
+        "x": 641,
+        "y": 162,
+        "wires": [
+            [
+                "a8a0b3a0.debb78"
+            ]
+        ]
+    },
+    {
+        "id": "a8a0b3a0.debb78",
+        "type": "sendtext",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "position": "0",
+        "positionType": "num",
+        "text": "payload.text",
+        "textType": "msg",
+        "x": 771,
+        "y": 162,
+        "wires": [
+            [
+                "135c951a.835963"
+            ]
+        ]
     }
 ]
