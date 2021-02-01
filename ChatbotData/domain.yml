@@ -1,0 +1,28 @@
+slots:
+  location:
+    type: text
+
+
+intents:
+ - greet
+ - goodbye
+ - inform_weather
+ - inform_location
+
+
+entities:
+ - location
+
+responses:
+  utter_greet:
+    - text: 'Hello! How can I help?'
+  utter_goodbye:
+    - text: 'Talk to you later.'
+    - text: 'Bye bye :('
+  utter_ask_location:
+    - text: 'In what location?'
+
+
+actions:
+ - action_weather
+ - action_more

@@ -27,7 +27,11 @@ catches errors and reports the error message to Rasa. Returns HTTP status code 5
 
 ## Try it out
 ### Chatbot data
-Data and config files for a very preliminary version of the weather chatbot are provided, which you may use for training the chatbot.
+Data and config files for a very preliminary version of the weather chatbot are provided, which you may use for training the chatbot. (Rasa Version: 2.2.x)
 
-### Test it manually with postman 
+### Test it manually with Postman 
 Two sample requests are provided for manual testing of the action server with Postman.
+
+## References
+- https://github.com/JustinaPetr/Weatherbot_Tutorial
+- https://rasa.com/docs/rasa/
