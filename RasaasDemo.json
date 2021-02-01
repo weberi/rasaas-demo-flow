@@ -10,7 +10,6 @@
         "id": "a2069b4b.8b5ed8",
         "type": "http in",
         "z": "2f82d84a.d829f",
-        "d": true,
         "name": "/webhook",
         "url": "/webhook",
         "method": "post",
@@ -29,12 +28,11 @@
         "type": "init",
         "z": "2f82d84a.d829f",
         "name": "",
-        "x": 230,
+        "x": 210,
         "y": 40,
         "wires": [
             [
-                "aa829c12.bbee9",
-                "84ce997.b555668"
+                "aa829c12.bbee9"
             ]
         ]
     },
@@ -43,8 +41,8 @@
         "type": "finish",
         "z": "2f82d84a.d829f",
         "name": "",
-        "x": 870,
-        "y": 243,
+        "x": 730,
+        "y": 160,
         "wires": [
             [
                 "8070ce06.508d7"
@@ -58,8 +56,8 @@
         "name": "http response",
         "statusCode": "",
         "headers": {},
-        "x": 840,
-        "y": 323,
+        "x": 880,
+        "y": 160,
         "wires": []
     },
     {
@@ -73,8 +71,8 @@
         "syntax": "mustache",
         "template": "http://api.weatherstack.com/current?access_key=a44da752f27b1faef406ed4f6246b5d5&query={{slots.location}}",
         "output": "str",
-        "x": 360,
-        "y": 163,
+        "x": 300,
+        "y": 100,
         "wires": [
             [
                 "32d1ca39.3ad06e"
@@ -94,8 +92,8 @@
         "persist": false,
         "proxy": "",
         "authType": "",
-        "x": 690,
-        "y": 163,
+        "x": 610,
+        "y": 100,
         "wires": [
             [
                 "9eb354e8.32b04"
@@ -121,8 +119,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 510,
-        "y": 163,
+        "x": 450,
+        "y": 100,
         "wires": [
             [
                 "2756693d.946c0e"
@@ -140,8 +138,8 @@
         "syntax": "mustache",
         "template": "It is {{payload.current.weather_descriptions.0}} in {{payload.location.name}}, {{payload.location.country}} at the moment. The temperature is {{payload.current.temperature}} degrees, \nthe humidity is {{payload.current.humidity}}% and the wind speed is {{payload.current.wind_speed}} mph.",
         "output": "str",
-        "x": 860,
-        "y": 163,
+        "x": 760,
+        "y": 100,
         "wires": [
             [
                 "73cf767f.109ed8"
@@ -155,8 +153,8 @@
         "name": "Catchall",
         "scope": null,
         "uncaught": false,
-        "x": 100,
-        "y": 463,
+        "x": 80,
+        "y": 260,
         "wires": [
             [
                 "58e52787.2f0708"
@@ -173,8 +171,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 310,
-        "y": 463,
+        "x": 270,
+        "y": 260,
         "wires": [
             [
                 "17992cb7.88487b"
@@ -188,8 +186,8 @@
         "name": "http (500)",
         "statusCode": "",
         "headers": {},
-        "x": 800,
-        "y": 463,
+        "x": 720,
+        "y": 260,
         "wires": []
     },
     {
@@ -197,8 +195,8 @@
         "type": "finish",
         "z": "2f82d84a.d829f",
         "name": "",
-        "x": 670,
-        "y": 463,
+        "x": 590,
+        "y": 260,
         "wires": [
             [
                 "76e2ce0.8fa6eb4"
@@ -210,12 +208,12 @@
         "type": "sendtext",
         "z": "2f82d84a.d829f",
         "name": "",
-        "position": "",
-        "positionType": "",
+        "position": "0",
+        "positionType": "num",
         "text": "payload.infotext",
         "textType": "msg",
-        "x": 520,
-        "y": 463,
+        "x": 460,
+        "y": 260,
         "wires": [
             [
                 "65b63033.ba5d7"
@@ -227,19 +225,19 @@
         "type": "sendextra",
         "z": "2f82d84a.d829f",
         "name": "",
-        "position": "",
-        "positionType": "",
+        "position": "0",
+        "positionType": "num",
         "text": "payload.text",
         "textType": "msg",
         "image": "payload.current.weather_icons",
         "imageType": "msg",
         "attachment": "",
         "attachmentType": "str",
-        "x": 120,
-        "y": 243,
+        "x": 300,
+        "y": 160,
         "wires": [
             [
-                "47237d22.eafac4"
+                "559bf1a4.898f78"
             ]
         ]
     },
@@ -254,92 +252,15 @@
             {
                 "slotname": "location",
                 "slotname-type": "str",
-                "slotvalue": "payload.newlocation",
-                "slotvalue-type": "msg"
+                "slotvalue": "",
+                "slotvalue-type": "str"
             }
         ],
-        "x": 720,
-        "y": 243,
+        "x": 600,
+        "y": 160,
         "wires": [
             [
                 "135c951a.835963"
-            ]
-        ]
-    },
-    {
-        "id": "47c348d1.0d53e",
-        "type": "change",
-        "z": "2f82d84a.d829f",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.newlocation",
-                "pt": "msg",
-                "to": "Barcelona",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 510,
-        "y": 243,
-        "wires": [
-            [
-                "5d24aa91.72a394"
-            ]
-        ]
-    },
-    {
-        "id": "47237d22.eafac4",
-        "type": "sendbuttons",
-        "z": "2f82d84a.d829f",
-        "name": "",
-        "position": "",
-        "positionType": "",
-        "text": "",
-        "textType": "str",
-        "addmode": "no",
-        "buttons": [
-            {
-                "title": "Thanks, I am done",
-                "title-type": "str",
-                "payload": "/goodbye",
-                "payload-type": "str"
-            },
-            {
-                "title": "I want to ask more weather",
-                "title-type": "str",
-                "payload": "/hello",
-                "payload-type": "str"
-            },
-            {
-                "title": "I want more info",
-                "title-type": "str",
-                "payload": "/action_more",
-                "payload-type": "str"
-            },
-            {
-                "title": "",
-                "title-type": "str",
-                "payload": "",
-                "payload-type": "str"
-            },
-            {
-                "title": "",
-                "title-type": "str",
-                "payload": "",
-                "payload-type": "str"
-            }
-        ],
-        "x": 270,
-        "y": 243,
-        "wires": [
-            [
-                "47c348d1.0d53e"
             ]
         ]
     },
@@ -352,8 +273,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 90,
-        "y": 523,
+        "x": 70,
+        "y": 320,
         "wires": [
             [
                 "ef311f1d.9947"
@@ -364,11 +285,11 @@
         "id": "2427f09a.8e059",
         "type": "http response",
         "z": "2f82d84a.d829f",
-        "name": "",
+        "name": "http response",
         "statusCode": "",
         "headers": {},
-        "x": 490,
-        "y": 523,
+        "x": 360,
+        "y": 320,
         "wires": []
     },
     {
@@ -380,8 +301,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 90,
-        "y": 583,
+        "x": 70,
+        "y": 380,
         "wires": [
             [
                 "c9d888e2.dab94"
@@ -392,11 +313,11 @@
         "id": "67b0be2.2deb94",
         "type": "http response",
         "z": "2f82d84a.d829f",
-        "name": "",
+        "name": "http response",
         "statusCode": "",
         "headers": {},
-        "x": 490,
-        "y": 583,
+        "x": 360,
+        "y": 380,
         "wires": []
     },
     {
@@ -418,8 +339,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 260,
-        "y": 523,
+        "x": 200,
+        "y": 320,
         "wires": [
             [
                 "2427f09a.8e059"
@@ -430,7 +351,7 @@
         "id": "c9d888e2.dab94",
         "type": "change",
         "z": "2f82d84a.d829f",
-        "name": "",
+        "name": "actions",
         "rules": [
             {
                 "t": "set",
@@ -445,8 +366,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 270,
-        "y": 583,
+        "x": 200,
+        "y": 380,
         "wires": [
             [
                 "67b0be2.2deb94"
@@ -475,8 +396,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 150,
-        "y": 120,
+        "x": 110,
+        "y": 100,
         "wires": [
             [
                 "f18c57c9.8e85c"
@@ -499,8 +420,8 @@
         "persist": false,
         "proxy": "",
         "authType": "",
-        "x": 430,
-        "y": 380,
+        "x": 450,
+        "y": 200,
         "wires": [
             [
                 "5f2aa558.5d16d4"
@@ -518,8 +439,8 @@
         "syntax": "mustache",
         "template": "https://en.wikipedia.org/w/api.php?action=opensearch&limit=1&namespace=0&format=json&search={{slots.location}}",
         "output": "str",
-        "x": 100,
-        "y": 340,
+        "x": 140,
+        "y": 200,
         "wires": [
             [
                 "c147a06b.49b2b"
@@ -531,16 +452,16 @@
         "type": "sendextra",
         "z": "2f82d84a.d829f",
         "name": "",
-        "position": "",
-        "positionType": "",
+        "position": "0",
+        "positionType": "num",
         "text": "You can find more info here!",
         "textType": "str",
         "image": "",
         "imageType": "str",
         "attachment": "payload[3][0]",
         "attachmentType": "msg",
-        "x": 620,
-        "y": 380,
+        "x": 600,
+        "y": 200,
         "wires": [
             [
                 "2f587fda.4540f8"
@@ -552,8 +473,8 @@
         "type": "finish",
         "z": "2f82d84a.d829f",
         "name": "",
-        "x": 750,
-        "y": 380,
+        "x": 730,
+        "y": 200,
         "wires": [
             [
                 "c51912c0.7ed228"
@@ -564,11 +485,11 @@
         "id": "c51912c0.7ed228",
         "type": "http response",
         "z": "2f82d84a.d829f",
-        "name": "",
+        "name": "http response",
         "statusCode": "",
         "headers": {},
-        "x": 870,
-        "y": 380,
+        "x": 880,
+        "y": 200,
         "wires": []
     },
     {
@@ -590,8 +511,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 250,
-        "y": 360,
+        "x": 290,
+        "y": 200,
         "wires": [
             [
                 "5b5ac2d6.321934"
@@ -599,20 +520,51 @@
         ]
     },
     {
-        "id": "84ce997.b555668",
-        "type": "debug",
+        "id": "559bf1a4.898f78",
+        "type": "sendbuttons",
         "z": "2f82d84a.d829f",
         "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "action",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 520,
-        "y": 80,
+        "position": "1",
+        "positionType": "num",
+        "text": "",
+        "textType": "str",
+        "addmode": "no",
+        "buttons": [
+            {
+                "title": "Thanks, I am done",
+                "title-type": "str",
+                "payload": "/goodbye",
+                "payload-type": "str"
+            },
+            {
+                "title": "I have more questions",
+                "title-type": "str",
+                "payload": "/hello",
+                "payload-type": "str"
+            },
+            {
+                "title": "Please tell me more",
+                "title-type": "str",
+                "payload": "/inform_location",
+                "payload-type": "str"
+            }
+        ],
+        "x": 450,
+        "y": 160,
+        "wires": [
+            [
+                "5d24aa91.72a394"
+            ]
+        ]
+    },
+    {
+        "id": "9958d58e.e8425",
+        "type": "comment",
+        "z": "2f82d84a.d829f",
+        "name": "add api key for weatherstack",
+        "info": "",
+        "x": 480,
+        "y": 60,
         "wires": []
     }
 ]
