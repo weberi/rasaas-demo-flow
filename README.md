@@ -23,3 +23,5 @@ sends back a list of the actions it supports. The actions have to be configured 
 
 ### Catchall
 catches errors and reports the error message to Rasa. Returns HTTP status code 500.
+
+[rasaasdemo](rasaasdemo.png)
