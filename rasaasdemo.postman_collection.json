@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "d7c5e855-36fe-46b7-9a82-5c022e341bc8",
+		"name": "rasaasdemo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "action_weather",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"next_action\": \"action_weather\",\r\n  \"sender_id\": \"21224fd1-0460-4fbd-ba12-56877c880b03\",\r\n  \"tracker\": {\r\n    \"sender_id\": \"21224fd1-0460-4fbd-ba12-56877c880b03\",\r\n    \"slots\": {\r\n      \"location\": \"oslo\"\r\n    },\r\n      \"entities\": [ ]\r\n  },\r\n  \"domain\": {\r\n  },\r\n  \"version\": \"2.2.6\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://193.174.208.30:1882/webhook",
+					"protocol": "http",
+					"host": [
+						"193",
+						"174",
+						"208",
+						"30"
+					],
+					"port": "1882",
+					"path": [
+						"webhook"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "action_more",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"next_action\": \"action_more\",\r\n  \"sender_id\": \"21224fd1-0460-4fbd-ba12-56877c880b03\",\r\n  \"tracker\": {\r\n    \"sender_id\": \"21224fd1-0460-4fbd-ba12-56877c880b03\",\r\n    \"slots\": {\r\n      \"location\": \"oslo\"\r\n    },\r\n      \"entities\": [ ]\r\n  },\r\n  \"domain\": {\r\n  },\r\n  \"version\": \"2.2.6\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://193.174.208.30:1882/webhook",
+					"protocol": "http",
+					"host": [
+						"193",
+						"174",
+						"208",
+						"30"
+					],
+					"port": "1882",
+					"path": [
+						"webhook"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
