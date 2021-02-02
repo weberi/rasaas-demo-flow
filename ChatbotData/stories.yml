@@ -1,0 +1,178 @@
+version: "2.0"
+
+stories:
+- story: Generated Story 3320800183399695936
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform_weather
+  - action: utter_ask_location
+  - intent: inform_weather
+    entities:
+    - location: italy
+  - slot_was_set:
+    - location: italy
+  - action: action_weather
+  - slot_was_set:
+    - location: italy
+  - intent: goodbye
+  - action: utter_goodbye
+- story: Generated Story 332080018339969000
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform_location
+  - action: utter_ask_location
+  - intent: inform_location
+    entities:
+    - location: italy
+  - slot_was_set:
+    - location: italy
+  - action: action_more
+  - slot_was_set:
+    - location: italy
+  - intent: goodbye
+  - action: utter_goodbye
+- story: Generated Story -3351152636827275381
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform_weather
+    entities:
+    - location: London
+  - slot_was_set:
+    - location: London
+  - action: action_weather
+  - intent: goodbye
+  - action: utter_goodbye
+- story: Generated Story -3351152636827278888
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform_weather
+    entities:
+    - location: London
+  - slot_was_set:
+    - location: London
+  - action: action_weather
+  - intent: inform_location
+    entities:
+    - location: London
+  - slot_was_set:
+    - location: London
+  - action: action_more
+  - intent: goodbye
+  - action: utter_goodbye 
+- story: Generated Story 8921121480760034253
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform_weather
+  - action: utter_ask_location
+  - intent: inform_weather
+    entities:
+    - location: London
+  - slot_was_set:
+    - location: London
+  - action: action_weather
+  - intent: goodbye
+  - action: utter_goodbye
+- story: Generated Story -5208991511085841103
+  steps:
+  - slot_was_set:
+    - location: London
+  - action: action_weather
+  - intent: goodbye
+  - action: utter_goodbye
+- story: Generated Story -5208991511085841103
+  steps:
+  - slot_was_set:
+    - location: London
+  - action: action_weather
+  - intent: goodbye
+  - action: utter_goodbye
+- story: story_001
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform_weather
+  - action: utter_ask_location
+  - intent: inform_weather
+    entities:
+    - location: London
+  - slot_was_set:
+    - location: London
+  - action: action_weather
+  - intent: goodbye
+  - action: utter_goodbye
+- story: story_002
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform_weather
+    entities:
+    - location: Paris
+  - slot_was_set:
+    - location: Paris
+  - action: action_weather
+  - intent: goodbye
+  - action: utter_goodbye
+- story: story_003
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform_weather
+  - action: utter_ask_location
+  - intent: inform_weather
+    entities:
+    - location: Vilnius
+  - slot_was_set:
+    - location: Vilnius
+  - action: action_weather
+  - intent: goodbye
+  - action: utter_goodbye
+- story: story_004
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform_weather
+    entities:
+    - location: Italy
+  - slot_was_set:
+    - location: Italy
+  - action: action_weather
+  - intent: goodbye
+  - action: utter_goodbye
+- story: story_004_iw
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform_weather
+    entities:
+    - location: Italy
+  - slot_was_set:
+    - location: Italy
+  - action: action_weather
+  - intent: inform_location
+    entities:
+    - location: Italy
+  - slot_was_set:
+    - location: Italy
+  - action: action_more
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: story_005
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: inform_weather
+  - action: utter_ask_location
+  - intent: inform_weather
+    entities:
+    - location: Lithuania
+  - slot_was_set:
+    - location: Lithuania
+  - action: action_weather
+  - intent: goodbye
+  - action: utter_goodbye
