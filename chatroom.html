@@ -1,0 +1,17 @@
+<head>
+    <link rel="stylesheet" href="https://npm-scalableminds.s3.eu-central-1.amazonaws.com/@scalableminds/chatroom@master/dist/Chatroom.css" />
+  </head>
+  <body>
+    <div class="chat-container"></div>
+    <script src="https://npm-scalableminds.s3.eu-central-1.amazonaws.com/@scalableminds/chatroom@master/dist/Chatroom.js"/></script>
+    <script type="text/javascript">
+      var chatroom = new window.Chatroom({
+        host: "http://127.0.0.1:5005",
+        title: "Weather Bot",
+        container: document.querySelector(".chat-container"),
+        welcomeMessage: "Hello, i am your weather bot!",
+        speechRecognition: "en-US"
+      });
+      chatroom.openChat();
+    </script>
+  </body>

@@ -1,0 +1,30 @@
+# The config recipe.
+# https://rasa.com/docs/rasa/model-configuration/
+
+recipe: default.v1
+language: en
+
+pipeline:
+- name: SpacyNLP
+  model: "en_core_web_md"
+- name: SpacyTokenizer
+- name: SpacyFeaturizer
+  pooling: mean
+- name: DIETClassifier
+  epochs: 100
+- name: EntitySynonymMapper
+- name: FallbackClassifier
+  threshold: 0.3
+  ambiguity_threshold: 0.1  
+
+policies:
+  - name: MemoizationPolicy
+  - name: UnexpecTEDIntentPolicy
+    max_history: 8
+    epochs: 100
+  - name: TEDPolicy
+    max_history: 8
+    epochs: 100
+    constrain_similarities: true
+  - name: RulePolicy
+

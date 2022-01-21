@@ -1,0 +1,4 @@
+RasaBot/models/*
+RasaBot/actions/*
+env/
+RasaBot/.rasa/

@@ -1,7 +1,0 @@
-
-  
-#  action_endpoint:  
-#   url: http://127.0.0.1:1880/webhook
-
- action_endpoint:  
-  url: http://193.174.208.30:1882/webhook

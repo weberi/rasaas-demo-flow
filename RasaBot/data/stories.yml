@@ -1,0 +1,176 @@
+version: "3.0"
+
+stories:  
+- story: 1 weather +loc 
+  steps:
+  - intent: inform_weather
+    entities:
+    - location: Kempten
+  - slot_was_set:
+    - location: Kempten
+  - action: action_weather
+
+- story: 1b weather +loc 
+  steps:
+  - intent: inform_weather
+    entities:
+    - location: Stockholm
+  - slot_was_set:
+    - location: Stockholm
+  - action: action_weather
+
+- story: 1c weather +loc 
+  steps:
+  - intent: inform_weather
+    entities:
+    - location: Vienna
+  - slot_was_set:
+    - location: Vienna
+  - action: action_weather
+   
+
+- story: 2 weather -loc
+  steps:
+  - intent: inform_weather
+  - action: utter_ask_location
+  - intent: tell_location
+    entities:
+    - location: Spain
+  - slot_was_set:
+    - location: Spain
+  - action: action_weather
+
+- story: 3 info +loc
+  steps:
+  - intent: inform_generally
+    entities:
+    - location: vilnius
+  - slot_was_set:
+    - location: vilnius
+  - action: action_generalinfo
+
+- story: 3b info +loc
+  steps:
+  - intent: inform_generally
+    entities:
+    - location: italy
+  - slot_was_set:
+    - location: italy
+  - action: action_generalinfo
+
+- story: 3c info +loc
+  steps:
+  - intent: inform_generally
+    entities:
+    - location: miami
+  - slot_was_set:
+    - location: miami
+  - action: action_generalinfo
+
+- story: 3c info +loc
+  steps:
+  - intent: inform_generally
+    entities:
+    - location: fulda
+  - slot_was_set:
+    - location: fulda
+  - action: action_generalinfo
+
+- story: 4 info -loc
+  steps:
+  - intent: inform_generally
+  - action: utter_ask_location
+  - intent: tell_location
+    entities:
+    - location: munich
+  - slot_was_set:
+    - location: munich
+  - action: action_generalinfo
+
+- story: 5 weather -loc info
+  steps:
+  - intent: inform_weather
+  - action: utter_ask_location
+  - intent: tell_location
+    entities:
+    - location: mumbai
+  - slot_was_set:
+    - location: mumbai
+  - action: action_weather
+  - intent: inform_generally
+  - slot_was_set:
+    - location: mumbai
+  - action: action_generalinfo
+
+- story: 5b weather -loc info
+  steps:
+  - intent: inform_weather 
+  - action: utter_ask_location
+  - intent: tell_location
+    entities:
+    - location: amsterdam
+  - slot_was_set:
+    - location: amsterdam
+  - action: action_weather
+  - intent: inform_generally
+  - slot_was_set:
+    - location: amsterdam
+  - action: action_generalinfo
+  
+
+- story: 6 info -loc weather
+  steps:
+  - intent: inform_generally
+  - action: utter_ask_location
+  - intent: tell_location
+    entities:
+    - location: munich
+  - slot_was_set:
+    - location: munich
+  - action: action_generalinfo
+  - intent: inform_weather
+  - slot_was_set:
+    - location: munich
+  - action: action_weather
+
+- story: 6b info -loc weather
+  steps:
+  - intent: inform_generally 
+  - action: utter_ask_location
+  - intent: tell_location
+    entities:
+    - location: berlin
+  - slot_was_set:
+    - location: berlin
+  - action: action_generalinfo
+  - intent: inform_weather
+  - slot_was_set:
+    - location: berlin
+  - action: action_weather
+
+- story: weather -loc info
+  steps:
+  - intent: inform_weather
+    entities:
+    - location: amsterdam
+  - slot_was_set:
+    - location: amsterdam
+  - action: action_weather
+  - intent: inform_generally
+  - slot_was_set:
+    - location: amsterdam
+  - action: action_generalinfo
+  
+
+- story: 6 info -loc weather
+  steps:
+  - intent: inform_generally
+    entities:
+    - location: munich
+  - slot_was_set:
+    - location: munich
+  - action: action_generalinfo
+  - intent: inform_weather
+  - slot_was_set:
+    - location: munich
+  - action: action_weather

@@ -41,7 +41,7 @@
         "type": "finish",
         "z": "2f82d84a.d829f",
         "name": "",
-        "x": 748,
+        "x": 750,
         "y": 220,
         "wires": [
             [
@@ -92,6 +92,7 @@
         "persist": false,
         "proxy": "",
         "authType": "",
+        "senderr": false,
         "x": 628,
         "y": 100,
         "wires": [
@@ -153,29 +154,11 @@
         "name": "Catchall",
         "scope": null,
         "uncaught": false,
-        "x": 80,
-        "y": 320,
+        "x": 100,
+        "y": 360,
         "wires": [
             [
-                "58e52787.2f0708"
-            ]
-        ]
-    },
-    {
-        "id": "58e52787.2f0708",
-        "type": "function",
-        "z": "2f82d84a.d829f",
-        "name": "prepare error message",
-        "func": "\n\nvar infotext = \"Sorry, jetzt ist ein Fehler aufgetreten!!\\nDiese technische Info ist fÃ¼r meine Betreuer. \\n_\" + msg.error.message + \" (\" +  msg.error.source.id +\")._\\n\" + \" Bitte versuchen Sie es noch einmal mit einer anderen Eingabe.\"\n\n\npayload.infotext = infotext;\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 270,
-        "y": 320,
-        "wires": [
-            [
-                "17992cb7.88487b"
+                "41eea069a5e78fb4"
             ]
         ]
     },
@@ -183,11 +166,11 @@
         "id": "76e2ce0.8fa6eb4",
         "type": "http response",
         "z": "2f82d84a.d829f",
-        "name": "http (500)",
-        "statusCode": "",
+        "name": "http (200)",
+        "statusCode": "200",
         "headers": {},
-        "x": 720,
-        "y": 320,
+        "x": 900,
+        "y": 360,
         "wires": []
     },
     {
@@ -195,8 +178,8 @@
         "type": "finish",
         "z": "2f82d84a.d829f",
         "name": "",
-        "x": 590,
-        "y": 320,
+        "x": 750,
+        "y": 360,
         "wires": [
             [
                 "76e2ce0.8fa6eb4"
@@ -212,8 +195,9 @@
         "positionType": "num",
         "text": "payload.infotext",
         "textType": "msg",
-        "x": 460,
-        "y": 320,
+        "senderr": false,
+        "x": 580,
+        "y": 360,
         "wires": [
             [
                 "65b63033.ba5d7"
@@ -233,34 +217,12 @@
         "imageType": "msg",
         "attachment": "",
         "attachmentType": "str",
-        "x": 300,
+        "senderr": false,
+        "x": 260,
         "y": 220,
         "wires": [
             [
                 "559bf1a4.898f78"
-            ]
-        ]
-    },
-    {
-        "id": "5d24aa91.72a394",
-        "type": "setslots",
-        "z": "2f82d84a.d829f",
-        "name": "",
-        "text": "",
-        "addcheck": false,
-        "slots": [
-            {
-                "slotname": "location",
-                "slotname-type": "str",
-                "slotvalue": "",
-                "slotvalue-type": "str"
-            }
-        ],
-        "x": 600,
-        "y": 220,
-        "wires": [
-            [
-                "135c951a.835963"
             ]
         ]
     },
@@ -273,8 +235,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 70,
-        "y": 380,
+        "x": 90,
+        "y": 420,
         "wires": [
             [
                 "ef311f1d.9947"
@@ -286,10 +248,10 @@
         "type": "http response",
         "z": "2f82d84a.d829f",
         "name": "http response",
-        "statusCode": "",
+        "statusCode": "200",
         "headers": {},
-        "x": 360,
-        "y": 380,
+        "x": 380,
+        "y": 420,
         "wires": []
     },
     {
@@ -301,8 +263,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 70,
-        "y": 440,
+        "x": 90,
+        "y": 480,
         "wires": [
             [
                 "c9d888e2.dab94"
@@ -314,10 +276,10 @@
         "type": "http response",
         "z": "2f82d84a.d829f",
         "name": "http response",
-        "statusCode": "",
+        "statusCode": "200",
         "headers": {},
-        "x": 360,
-        "y": 440,
+        "x": 380,
+        "y": 480,
         "wires": []
     },
     {
@@ -339,8 +301,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 200,
-        "y": 380,
+        "x": 220,
+        "y": 420,
         "wires": [
             [
                 "2427f09a.8e059"
@@ -357,7 +319,7 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "[{\"name\":\"action_weather\"},{\"name\":\"action_more\"}]",
+                "to": "[{\"name\":\"action_weather\"},{\"name\":\"action_generalinfo\"},{\"name\":\"action_clearloation\"}]",
                 "tot": "json"
             }
         ],
@@ -366,8 +328,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 200,
-        "y": 440,
+        "x": 220,
+        "y": 480,
         "wires": [
             [
                 "67b0be2.2deb94"
@@ -389,13 +351,18 @@
             },
             {
                 "t": "eq",
-                "v": "action_more",
+                "v": "action_generalinfo",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "action_clearlocation",
                 "vt": "str"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 2,
+        "outputs": 3,
         "x": 106,
         "y": 114,
         "wires": [
@@ -404,6 +371,9 @@
             ],
             [
                 "229c11ea.110936"
+            ],
+            [
+                "297267d0fab88715"
             ]
         ]
     },
@@ -529,6 +499,7 @@
         "text": "",
         "textType": "str",
         "addmode": "no",
+        "senderr": false,
         "buttons": [
             {
                 "title": "Thanks, I am done",
@@ -539,21 +510,21 @@
             {
                 "title": "I have more questions",
                 "title-type": "str",
-                "payload": "/hello",
+                "payload": "/change_location",
                 "payload-type": "str"
             },
             {
                 "title": "Please tell me more",
                 "title-type": "str",
-                "payload": "/inform_location",
+                "payload": "/inform_generally",
                 "payload-type": "str"
             }
         ],
-        "x": 450,
+        "x": 430,
         "y": 220,
         "wires": [
             [
-                "5d24aa91.72a394"
+                "135c951a.835963"
             ]
         ]
     },
@@ -607,8 +578,8 @@
         "syntax": "mustache",
         "template": "I am sorry. I cannot help you. {{payload.error.info}} !",
         "output": "str",
-        "x": 641,
-        "y": 162,
+        "x": 490,
+        "y": 160,
         "wires": [
             [
                 "a8a0b3a0.debb78"
@@ -622,14 +593,130 @@
         "name": "",
         "position": "0",
         "positionType": "num",
-        "text": "payload.text",
-        "textType": "msg",
-        "x": 771,
-        "y": 162,
+        "text": "Sorry, I don't have weather data for this place.",
+        "textType": "str",
+        "senderr": false,
+        "x": 620,
+        "y": 160,
         "wires": [
             [
-                "135c951a.835963"
+                "74f4ff40229c4bc6"
             ]
         ]
+    },
+    {
+        "id": "297267d0fab88715",
+        "type": "setslots",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "text": "",
+        "addcheck": false,
+        "slots": [
+            {
+                "slotname": "location",
+                "slotname-type": "str",
+                "slotvalue": "",
+                "slotvalue-type": "str"
+            }
+        ],
+        "senderr": false,
+        "x": 120,
+        "y": 300,
+        "wires": [
+            [
+                "4dcda3d226976735"
+            ]
+        ]
+    },
+    {
+        "id": "4dcda3d226976735",
+        "type": "finish",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "x": 750,
+        "y": 300,
+        "wires": [
+            [
+                "df1916c1c6fc4239"
+            ]
+        ]
+    },
+    {
+        "id": "df1916c1c6fc4239",
+        "type": "http response",
+        "z": "2f82d84a.d829f",
+        "name": "http response",
+        "statusCode": "",
+        "headers": {},
+        "x": 900,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "41eea069a5e78fb4",
+        "type": "template",
+        "z": "2f82d84a.d829f",
+        "name": "prepare error message",
+        "field": "payload.infotext",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": " {{error.message}}  ({{error.source.name}}). Sorry. Please try  something else.\n\n\n",
+        "output": "str",
+        "x": 370,
+        "y": 360,
+        "wires": [
+            [
+                "17992cb7.88487b"
+            ]
+        ]
+    },
+    {
+        "id": "74f4ff40229c4bc6",
+        "type": "setslots",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "text": "",
+        "addcheck": false,
+        "slots": [
+            {
+                "slotname": "location",
+                "slotname-type": "str",
+                "slotvalue": "",
+                "slotvalue-type": "str"
+            }
+        ],
+        "senderr": false,
+        "x": 760,
+        "y": 160,
+        "wires": [
+            [
+                "d93db6b0cbbd6d53"
+            ]
+        ]
+    },
+    {
+        "id": "d93db6b0cbbd6d53",
+        "type": "finish",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "x": 890,
+        "y": 160,
+        "wires": [
+            [
+                "f276fc09970f506e"
+            ]
+        ]
+    },
+    {
+        "id": "f276fc09970f506e",
+        "type": "http response",
+        "z": "2f82d84a.d829f",
+        "name": "http response",
+        "statusCode": "",
+        "headers": {},
+        "x": 1040,
+        "y": 160,
+        "wires": []
     }
 ]
