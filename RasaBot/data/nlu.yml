@@ -1,0 +1,67 @@
+version: "3.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - Hello
+    - hey
+    - hello
+    - hi
+    - heya
+    - howdy
+    - hey there
+
+- intent: goodbye
+  examples: |
+    - goodbye
+    - bye
+    - bye bye
+    - see ya
+    - see you later
+
+- intent: inform_weather
+  examples: |
+    - What's the weather in [Berlin](location) at the moment?
+    - What's the weather today?
+    - What's the weather in [London](location) today?
+    - Show me what's the weather in [Paris](location)
+    - I wonder what is the weather in [Vilnius](location) right now?
+    - what is the weather?
+    - Tell me the weather
+    - Is the weather nice in [Barcelona](location) today?
+    - I am going to [London](location) today and I wonder what is the weather out there?
+    - I am planning my trip to [Amsterdam](location). What is the weather out there?
+    - Show me the weather in [Dublin](location), please
+    - Tell me the weather in [Vilnius](location)
+    - The weather condition in [Italy](location)
+
+- intent: inform_generally
+  examples: |
+    - Tell me more about [Berlin](location)
+    - How is [London](location)
+    - Show me [Amsterdam](location)
+    - I wonder how [Bangalore](location) is
+    - Can you show me more of [Barcelona](location)?
+    - Can you tell me something about  [Graz](location)?
+    - More info on Munich(location)
+
+- intent: tell_location
+  examples: |
+    - about [Berlin](location)
+    - [London](location)
+    - [Amsterdam](location)
+    - about [Munich](location)
+    - at [Munich](location)
+    - for [Senegal](location)
+    - about [Namibia](location)
+    - [France](location)
+    - Oh, sorry, in [Italy](location)
+    - I mean in [Kempten](location)    
+    - in [London](location)
+
+- intent: change_location
+  examples: |
+    - now, something different
+    - I have one more question
+    - one more question
+    - next question

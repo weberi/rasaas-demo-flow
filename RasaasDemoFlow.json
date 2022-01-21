@@ -1,15 +1,15 @@
 [
     {
-        "id": "73d2878a.90ce98",
+        "id": "2f82d84a.d829f",
         "type": "tab",
         "label": "RasaasDemo",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "c25a558.04db1a8",
+        "id": "a2069b4b.8b5ed8",
         "type": "http in",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "/webhook",
         "url": "/webhook",
         "method": "post",
@@ -19,40 +19,40 @@
         "y": 40,
         "wires": [
             [
-                "dcf5724c.649478"
+                "c543f689.9a4408"
             ]
         ]
     },
     {
-        "id": "dcf5724c.649478",
+        "id": "c543f689.9a4408",
         "type": "init",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "",
         "x": 210,
         "y": 40,
         "wires": [
             [
-                "d7412e85.e0a368"
+                "aa829c12.bbee9"
             ]
         ]
     },
     {
-        "id": "3e770d24.a21cda",
+        "id": "135c951a.835963",
         "type": "finish",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "",
-        "x": 748,
+        "x": 750,
         "y": 220,
         "wires": [
             [
-                "896d1c2e.85edd"
+                "8070ce06.508d7"
             ]
         ]
     },
     {
-        "id": "896d1c2e.85edd",
+        "id": "8070ce06.508d7",
         "type": "http response",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "http response",
         "statusCode": "",
         "headers": {},
@@ -61,9 +61,9 @@
         "wires": []
     },
     {
-        "id": "c9215b14.40e6b8",
+        "id": "f18c57c9.8e85c",
         "type": "template",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "weather-template",
         "field": "payload",
         "fieldType": "msg",
@@ -75,14 +75,14 @@
         "y": 100,
         "wires": [
             [
-                "f8db1d4e.9987b"
+                "32d1ca39.3ad06e"
             ]
         ]
     },
     {
-        "id": "38ce67c9.c44e7",
+        "id": "2756693d.946c0e",
         "type": "http request",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "",
         "method": "GET",
         "ret": "obj",
@@ -92,18 +92,19 @@
         "persist": false,
         "proxy": "",
         "authType": "",
+        "senderr": false,
         "x": 628,
         "y": 100,
         "wires": [
             [
-                "a66a3e41.8e965"
+                "8b59fd8f.24a59"
             ]
         ]
     },
     {
-        "id": "f8db1d4e.9987b",
+        "id": "32d1ca39.3ad06e",
         "type": "change",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "",
         "rules": [
             {
@@ -123,14 +124,14 @@
         "y": 100,
         "wires": [
             [
-                "38ce67c9.c44e7"
+                "2756693d.946c0e"
             ]
         ]
     },
     {
-        "id": "ad7ceb81.c0f48",
+        "id": "9eb354e8.32b04",
         "type": "template",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "otherwise",
         "field": "payload.text",
         "fieldType": "msg",
@@ -142,88 +143,71 @@
         "y": 160,
         "wires": [
             [
-                "d2c91a6.9dc1ce8"
+                "73cf767f.109ed8"
             ]
         ]
     },
     {
-        "id": "5d4a2bfd.f6ea34",
+        "id": "47d49ded.2c5194",
         "type": "catch",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "Catchall",
         "scope": null,
         "uncaught": false,
-        "x": 80,
-        "y": 320,
+        "x": 100,
+        "y": 360,
         "wires": [
             [
-                "f26c6b3e.3264b"
+                "41eea069a5e78fb4"
             ]
         ]
     },
     {
-        "id": "f26c6b3e.3264b",
-        "type": "function",
-        "z": "73d2878a.90ce98",
-        "name": "prepare error message",
-        "func": "\n\nvar infotext = \"Sorry, An error occurred!!\\n_\" + msg.error.message + \" (\" +  msg.error.source.id +\")._\\n\" \n\n\npayload.infotext = infotext;\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 270,
-        "y": 320,
-        "wires": [
-            [
-                "f2d7af7d.89a79"
-            ]
-        ]
-    },
-    {
-        "id": "9a881b7f.9c32a8",
+        "id": "76e2ce0.8fa6eb4",
         "type": "http response",
-        "z": "73d2878a.90ce98",
-        "name": "http (500)",
-        "statusCode": "",
+        "z": "2f82d84a.d829f",
+        "name": "http (200)",
+        "statusCode": "200",
         "headers": {},
-        "x": 720,
-        "y": 320,
+        "x": 900,
+        "y": 360,
         "wires": []
     },
     {
-        "id": "cc5880c6.6630b8",
+        "id": "65b63033.ba5d7",
         "type": "finish",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "",
-        "x": 590,
-        "y": 320,
+        "x": 750,
+        "y": 360,
         "wires": [
             [
-                "9a881b7f.9c32a8"
+                "76e2ce0.8fa6eb4"
             ]
         ]
     },
     {
-        "id": "f2d7af7d.89a79",
+        "id": "17992cb7.88487b",
         "type": "sendtext",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "",
         "position": "0",
         "positionType": "num",
         "text": "payload.infotext",
         "textType": "msg",
-        "x": 460,
-        "y": 320,
+        "senderr": false,
+        "x": 580,
+        "y": 360,
         "wires": [
             [
-                "cc5880c6.6630b8"
+                "65b63033.ba5d7"
             ]
         ]
     },
     {
-        "id": "d2c91a6.9dc1ce8",
+        "id": "73cf767f.109ed8",
         "type": "sendextra",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "",
         "position": "0",
         "positionType": "num",
@@ -233,97 +217,75 @@
         "imageType": "msg",
         "attachment": "",
         "attachmentType": "str",
-        "x": 300,
+        "senderr": false,
+        "x": 260,
         "y": 220,
         "wires": [
             [
-                "40e94f1e.a946a"
+                "559bf1a4.898f78"
             ]
         ]
     },
     {
-        "id": "56f45b42.9c672c",
-        "type": "setslots",
-        "z": "73d2878a.90ce98",
-        "name": "",
-        "text": "",
-        "addcheck": false,
-        "slots": [
-            {
-                "slotname": "location",
-                "slotname-type": "str",
-                "slotvalue": "",
-                "slotvalue-type": "str"
-            }
-        ],
-        "x": 600,
-        "y": 220,
-        "wires": [
-            [
-                "3e770d24.a21cda"
-            ]
-        ]
-    },
-    {
-        "id": "1a82dcef.e78883",
+        "id": "88479415.978508",
         "type": "http in",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "/health",
         "url": "/health",
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 70,
-        "y": 380,
+        "x": 90,
+        "y": 420,
         "wires": [
             [
-                "871c875a.b9457"
+                "ef311f1d.9947"
             ]
         ]
     },
     {
-        "id": "652c8069.3be8a",
+        "id": "2427f09a.8e059",
         "type": "http response",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "http response",
-        "statusCode": "",
+        "statusCode": "200",
         "headers": {},
-        "x": 360,
-        "y": 380,
+        "x": 380,
+        "y": 420,
         "wires": []
     },
     {
-        "id": "c3d3a56c.fa3908",
+        "id": "df491661.98c9e8",
         "type": "http in",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "/actions",
         "url": "/actions",
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 70,
-        "y": 440,
+        "x": 90,
+        "y": 480,
         "wires": [
             [
-                "59f03d49.359ab4"
+                "c9d888e2.dab94"
             ]
         ]
     },
     {
-        "id": "95c39ad6.8f90d8",
+        "id": "67b0be2.2deb94",
         "type": "http response",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "http response",
-        "statusCode": "",
+        "statusCode": "200",
         "headers": {},
-        "x": 360,
-        "y": 440,
+        "x": 380,
+        "y": 480,
         "wires": []
     },
     {
-        "id": "871c875a.b9457",
+        "id": "ef311f1d.9947",
         "type": "change",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "Status: ok",
         "rules": [
             {
@@ -339,25 +301,25 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 200,
-        "y": 380,
+        "x": 220,
+        "y": 420,
         "wires": [
             [
-                "652c8069.3be8a"
+                "2427f09a.8e059"
             ]
         ]
     },
     {
-        "id": "59f03d49.359ab4",
+        "id": "c9d888e2.dab94",
         "type": "change",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "actions",
         "rules": [
             {
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "[{\"name\":\"action_weather\"},{\"name\":\"action_more\"}]",
+                "to": "[{\"name\":\"action_weather\"},{\"name\":\"action_generalinfo\"},{\"name\":\"action_clearloation\"}]",
                 "tot": "json"
             }
         ],
@@ -366,18 +328,18 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 200,
-        "y": 440,
+        "x": 220,
+        "y": 480,
         "wires": [
             [
-                "95c39ad6.8f90d8"
+                "67b0be2.2deb94"
             ]
         ]
     },
     {
-        "id": "d7412e85.e0a368",
+        "id": "aa829c12.bbee9",
         "type": "switch",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "",
         "property": "action",
         "propertyType": "msg",
@@ -389,28 +351,36 @@
             },
             {
                 "t": "eq",
-                "v": "action_more",
+                "v": "action_generalinfo",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "action_clearlocation",
                 "vt": "str"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 2,
+        "outputs": 3,
         "x": 106,
         "y": 114,
         "wires": [
             [
-                "c9215b14.40e6b8"
+                "f18c57c9.8e85c"
             ],
             [
-                "6f95611.d9ed7a"
+                "229c11ea.110936"
+            ],
+            [
+                "297267d0fab88715"
             ]
         ]
     },
     {
-        "id": "9b02bf73.207c7",
+        "id": "5b5ac2d6.321934",
         "type": "http request",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "",
         "method": "GET",
         "ret": "obj",
@@ -424,14 +394,14 @@
         "y": 260,
         "wires": [
             [
-                "a0661841.040a2"
+                "5f2aa558.5d16d4"
             ]
         ]
     },
     {
-        "id": "6f95611.d9ed7a",
+        "id": "229c11ea.110936",
         "type": "template",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "wiki-template",
         "field": "payload",
         "fieldType": "msg",
@@ -443,14 +413,14 @@
         "y": 260,
         "wires": [
             [
-                "bf065fe1.dc5ee"
+                "c147a06b.49b2b"
             ]
         ]
     },
     {
-        "id": "a0661841.040a2",
+        "id": "5f2aa558.5d16d4",
         "type": "sendextra",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "",
         "position": "0",
         "positionType": "num",
@@ -464,27 +434,27 @@
         "y": 260,
         "wires": [
             [
-                "52ffa1fb.ce7618"
+                "2f587fda.4540f8"
             ]
         ]
     },
     {
-        "id": "52ffa1fb.ce7618",
+        "id": "2f587fda.4540f8",
         "type": "finish",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "",
         "x": 748,
         "y": 260,
         "wires": [
             [
-                "ff58edd.7cb871"
+                "c51912c0.7ed228"
             ]
         ]
     },
     {
-        "id": "ff58edd.7cb871",
+        "id": "c51912c0.7ed228",
         "type": "http response",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "http response",
         "statusCode": "",
         "headers": {},
@@ -493,9 +463,9 @@
         "wires": []
     },
     {
-        "id": "bf065fe1.dc5ee",
+        "id": "c147a06b.49b2b",
         "type": "change",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "",
         "rules": [
             {
@@ -515,20 +485,21 @@
         "y": 260,
         "wires": [
             [
-                "9b02bf73.207c7"
+                "5b5ac2d6.321934"
             ]
         ]
     },
     {
-        "id": "40e94f1e.a946a",
+        "id": "559bf1a4.898f78",
         "type": "sendbuttons",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "",
         "position": "1",
         "positionType": "num",
         "text": "",
         "textType": "str",
         "addmode": "no",
+        "senderr": false,
         "buttons": [
             {
                 "title": "Thanks, I am done",
@@ -539,28 +510,28 @@
             {
                 "title": "I have more questions",
                 "title-type": "str",
-                "payload": "/hello",
+                "payload": "/change_location",
                 "payload-type": "str"
             },
             {
                 "title": "Please tell me more",
                 "title-type": "str",
-                "payload": "/inform_location",
+                "payload": "/inform_generally",
                 "payload-type": "str"
             }
         ],
-        "x": 450,
+        "x": 430,
         "y": 220,
         "wires": [
             [
-                "56f45b42.9c672c"
+                "135c951a.835963"
             ]
         ]
     },
     {
-        "id": "919edd31.01a1d8",
+        "id": "9958d58e.e8425",
         "type": "comment",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "add api key for weatherstack",
         "info": "",
         "x": 440,
@@ -568,9 +539,9 @@
         "wires": []
     },
     {
-        "id": "a66a3e41.8e965",
+        "id": "8b59fd8f.24a59",
         "type": "switch",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "",
         "property": "payload.success",
         "propertyType": "msg",
@@ -589,17 +560,17 @@
         "y": 100,
         "wires": [
             [
-                "bbc5fc27.3242f"
+                "88e8b933.29c788"
             ],
             [
-                "ad7ceb81.c0f48"
+                "9eb354e8.32b04"
             ]
         ]
     },
     {
-        "id": "bbc5fc27.3242f",
+        "id": "88e8b933.29c788",
         "type": "template",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "on fail",
         "field": "payload.text",
         "fieldType": "msg",
@@ -607,29 +578,145 @@
         "syntax": "mustache",
         "template": "I am sorry. I cannot help you. {{payload.error.info}} !",
         "output": "str",
-        "x": 641,
-        "y": 162,
+        "x": 490,
+        "y": 160,
         "wires": [
             [
-                "fbd05090.8aeef8"
+                "a8a0b3a0.debb78"
             ]
         ]
     },
     {
-        "id": "fbd05090.8aeef8",
+        "id": "a8a0b3a0.debb78",
         "type": "sendtext",
-        "z": "73d2878a.90ce98",
+        "z": "2f82d84a.d829f",
         "name": "",
         "position": "0",
         "positionType": "num",
-        "text": "payload.text",
-        "textType": "msg",
-        "x": 771,
-        "y": 162,
+        "text": "Sorry, I don't have weather data for this place.",
+        "textType": "str",
+        "senderr": false,
+        "x": 620,
+        "y": 160,
         "wires": [
             [
-                "3e770d24.a21cda"
+                "74f4ff40229c4bc6"
             ]
         ]
+    },
+    {
+        "id": "297267d0fab88715",
+        "type": "setslots",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "text": "",
+        "addcheck": false,
+        "slots": [
+            {
+                "slotname": "location",
+                "slotname-type": "str",
+                "slotvalue": "",
+                "slotvalue-type": "str"
+            }
+        ],
+        "senderr": false,
+        "x": 120,
+        "y": 300,
+        "wires": [
+            [
+                "4dcda3d226976735"
+            ]
+        ]
+    },
+    {
+        "id": "4dcda3d226976735",
+        "type": "finish",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "x": 750,
+        "y": 300,
+        "wires": [
+            [
+                "df1916c1c6fc4239"
+            ]
+        ]
+    },
+    {
+        "id": "df1916c1c6fc4239",
+        "type": "http response",
+        "z": "2f82d84a.d829f",
+        "name": "http response",
+        "statusCode": "",
+        "headers": {},
+        "x": 900,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "41eea069a5e78fb4",
+        "type": "template",
+        "z": "2f82d84a.d829f",
+        "name": "prepare error message",
+        "field": "payload.infotext",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": " {{error.message}}  ({{error.source.name}}). Sorry. Please try  something else.\n\n\n",
+        "output": "str",
+        "x": 370,
+        "y": 360,
+        "wires": [
+            [
+                "17992cb7.88487b"
+            ]
+        ]
+    },
+    {
+        "id": "74f4ff40229c4bc6",
+        "type": "setslots",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "text": "",
+        "addcheck": false,
+        "slots": [
+            {
+                "slotname": "location",
+                "slotname-type": "str",
+                "slotvalue": "",
+                "slotvalue-type": "str"
+            }
+        ],
+        "senderr": false,
+        "x": 760,
+        "y": 160,
+        "wires": [
+            [
+                "d93db6b0cbbd6d53"
+            ]
+        ]
+    },
+    {
+        "id": "d93db6b0cbbd6d53",
+        "type": "finish",
+        "z": "2f82d84a.d829f",
+        "name": "",
+        "x": 890,
+        "y": 160,
+        "wires": [
+            [
+                "f276fc09970f506e"
+            ]
+        ]
+    },
+    {
+        "id": "f276fc09970f506e",
+        "type": "http response",
+        "z": "2f82d84a.d829f",
+        "name": "http response",
+        "statusCode": "",
+        "headers": {},
+        "x": 1040,
+        "y": 160,
+        "wires": []
     }
 ]

@@ -1,0 +1,40 @@
+version: "3.0"
+
+intents:
+ - greet
+ - goodbye
+ - inform_weather
+ - inform_generally
+ - tell_location
+ - change_location
+
+entities:
+ - location
+
+slots:
+  location:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: location
+
+responses:
+  utter_greet:
+    - text: 'How can I help?'
+  utter_goodbye:
+    - text: 'Talk to you later.'
+    - text: 'Bye bye'
+  utter_ask_location:
+    - text: 'For which location?'
+
+
+actions:
+ - action_weather
+ - action_generalinfo
+ - action_clearlocation
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

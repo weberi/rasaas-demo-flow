@@ -1,0 +1,1 @@
+rasa run --port 5005 --enable-api --cors "*"

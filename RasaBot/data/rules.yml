@@ -1,0 +1,20 @@
+version: "3.0"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: change location
+  steps:
+  - intent: change_location
+  - action: action_clearlocation
+  - action: utter_greet
